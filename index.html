@@ -3,470 +3,773 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bibliochouette – Gestion moderne de bibliothèque en ligne</title>
-  <meta name="description" content="Gérez facilement vos livres, emprunteurs et prêts avec Bibliochouette, l'application PWA moderne pour bibliothèques. Multi-bibliothèques, suivi en temps réel, interface intuitive. Actuellement gratuite !">
-  <meta name="keywords" content="gestion bibliothèque en ligne, logiciel gestion livres, suivi emprunts bibliothèque, application bibliothèque moderne, gestion multi-bibliothèques, gestion emprunteurs, prêt de livres, bibliothèque numérique, application PWA bibliothèque, gestion livres ISBN">
-  <meta property="og:title" content="Bibliochouette – Gestion moderne de bibliothèque en ligne">
-  <meta property="og:description" content="Application PWA pour la gestion des bibliothèques : livres, emprunteurs, prêts, multi-bibliothèques, interface intuitive, sécurité, bilingue.">
+  <title>Bibliochouette | Gérez votre bibliothèque simplement</title>
+  <meta name="description" content="Bibliochouette aide les écoles et associations à gagner du temps : livres, prêts, emprunteurs et organisation claire, sans tableur ni installation.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#17363a">
+  <meta name="author" content="Bibliochouette">
+  <link rel="canonical" href="https://bibliochouette.fr/">
+
   <meta property="og:type" content="website">
-  <meta property="og:image" content="logo_png_cropped.png">
+  <meta property="og:site_name" content="Bibliochouette">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://bibliochouette.fr/">
+  <meta property="og:title" content="Bibliochouette | Gérez votre bibliothèque simplement">
+  <meta property="og:description" content="Une solution claire pour les écoles et associations qui veulent suivre les livres, les prêts et les emprunteurs sans complexité.">
+  <meta property="og:image" content="https://bibliochouette.fr/logo_png_cropped.png">
+  <meta property="og:image:alt" content="Logo Bibliochouette">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bibliochouette | Gérez votre bibliothèque simplement">
+  <meta name="twitter:description" content="Une solution claire pour les écoles et associations qui veulent suivre les livres, les prêts et les emprunteurs sans complexité.">
+  <meta name="twitter:image" content="https://bibliochouette.fr/logo_png_cropped.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'primary': {
-              50: '#eff6ff',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              900: '#1e3a8a'
+            brand: {
+              cream: '#f6f0df',
+              sand: '#efe2c4',
+              teal: '#4b7f82',
+              tealDark: '#17363a',
+              tealSoft: '#7aa8a6',
+              brown: '#8c6047',
+              green: '#b7d38f',
+              gold: '#f2c14e'
             }
           },
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Manrope', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 24px 80px rgba(23, 54, 58, 0.14)'
+          },
           animation: {
-            'fade-in': 'fadeIn 0.6s ease-out',
-            'slide-up': 'slideUp 0.8s ease-out',
-            'bounce-slow': 'bounce 2s infinite'
+            'fade-up': 'fadeUp 0.7s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+            'float-slow': 'float 10s ease-in-out infinite'
           }
         }
       }
     }
   </script>
   <style>
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    html {
+      scroll-behavior: smooth;
     }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(242, 193, 78, 0.12), transparent 22%),
+        radial-gradient(circle at top right, rgba(183, 211, 143, 0.16), transparent 26%),
+        linear-gradient(180deg, #f6f0df 0%, #fbf8f0 48%, #ffffff 100%);
     }
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    section {
+      scroll-margin-top: 88px;
     }
-    .hero-gradient {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hero-shell {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(242, 193, 78, 0.24), transparent 20%),
+        radial-gradient(circle at 90% 10%, rgba(183, 211, 143, 0.25), transparent 24%),
+        linear-gradient(135deg, #17363a 0%, #234d53 48%, #4b7f82 100%);
+    }
+
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(18px);
+    }
+
     .feature-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
     }
+
     .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 30px 70px rgba(23, 54, 58, 0.12);
+      border-color: rgba(75, 127, 130, 0.22);
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bibliochouette.fr/#organization",
+        "name": "Bibliochouette",
+        "url": "https://bibliochouette.fr/",
+        "logo": "https://bibliochouette.fr/logo_png_cropped.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://bibliochouette.fr/#software",
+        "name": "Bibliochouette",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://bibliochouette.fr/",
+        "description": "Outil de gestion de bibliothèque pour école et association : livres, emprunteurs, prêts et organisation claire.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "publisher": {
+          "@id": "https://bibliochouette.fr/#organization"
+        },
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bibliochouette.fr/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bibliochouette est-elle gratuite ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Bibliochouette est gratuite en ce moment, avec une offre de lancement annoncée pour les premiers utilisateurs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pour qui Bibliochouette est-elle conçue ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La solution est pensée en priorité pour les écoles et les associations qui ont besoin d'une gestion simple des livres, des emprunteurs et des prêts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il installer une application ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. Vous l'ouvrez directement depuis votre navigateur, sur ordinateur ou mobile."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Peut-on gérer plusieurs bibliothèques ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Le produit prend en charge la gestion multi-bibliothèques afin de séparer les collections et de passer rapidement d'un espace à l'autre."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mes données sont-elles sécurisées ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La sécurité reste une priorité, avec une communication sécurisée et des sauvegardes quotidiennes automatiques."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased">
-  
-  <!-- Navigation -->
-  <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center space-x-3">
-          <img src="logo_png_cropped.png" alt="Logo Bibliochouette" class="h-10 w-10" />
-          <span class="text-xl font-bold text-gray-900">Bibliochouette</span>
-        </div>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#fonctionnalites" class="text-gray-600 hover:text-primary-600 transition-colors">Fonctionnalités</a>
-          <a href="#tarifs" class="text-gray-600 hover:text-primary-600 transition-colors">Tarifs</a>
-          <a href="#faq" class="text-gray-600 hover:text-primary-600 transition-colors">FAQ</a>
-          <a href="https://app.bibliochouette.fr" class="bg-primary-600 text-white px-6 py-2 rounded-full font-medium hover:bg-primary-700 transition-all duration-200 shadow-md hover:shadow-lg">
-            Accéder à l'app
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+<body class="font-sans text-slate-900 antialiased">
+  <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900 focus:shadow-lg">
+    Aller au contenu
+  </a>
 
-  <!-- Hero Section -->
-  <section class="hero-gradient text-white pt-32 pb-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-black/10"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center animate-fade-in">
-        <div class="flex justify-center mb-8">
-          <img src="logo_png_cropped.png" alt="Logo Bibliochouette" class="h-24 w-24 animate-bounce-slow" />
+  <header class="sticky top-0 z-50 border-b border-white/60 bg-[#f7f1e3]/80 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Navigation principale">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="logo_png_cropped.png" alt="Logo Bibliochouette" width="1324" height="1324" decoding="async" class="h-11 w-11 rounded-2xl shadow-sm">
+        <div>
+          <p class="font-display text-lg font-bold tracking-tight text-brand-tealDark">Bibliochouette</p>
+          <p class="text-xs text-slate-500">Bibliothèque en ligne</p>
         </div>
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Bibliochouette
-        </h1>
-        <p class="text-xl md:text-2xl mb-4 text-blue-100 max-w-3xl mx-auto">
-          La solution moderne et intuitive pour la gestion de votre bibliothèque
-        </p>
-        <div class="flex items-center justify-center space-x-2 mb-8">
-          <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-            ✨ Actuellement GRATUIT
-          </span>
-          <span class="text-blue-100 text-sm">
-            + 1 an premium offert aux premiers utilisateurs
-          </span>
-        </div>
-        <div class="flex justify-center">
-          <a href="https://app.bibliochouette.fr" class="bg-white text-primary-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105">
-            Commencer gratuitement
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+      </a>
 
-  <!-- Features Section -->
-  <section id="fonctionnalites" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 animate-slide-up">
-        <h2 class="text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir Bibliochouette ?</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une solution complète et moderne pour gérer vos bibliothèques avec simplicité et efficacité</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Gestion complète des livres</h3>
-          <p class="text-gray-600">Ajoutez, modifiez et recherchez vos livres avec prise en charge de l'ISBN et récupération automatique des métadonnées</p>
-        </div>
-
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Suivi des emprunteurs</h3>
-          <p class="text-gray-600">Créez des profils d'emprunteurs, suivez l'historique des prêts et recevez des alertes en cas de retard</p>
-        </div>
-
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Multi-bibliothèques</h3>
-          <p class="text-gray-600">Gérez plusieurs bibliothèques depuis une seule interface avec isolation des données et changement rapide</p>
-        </div>
-
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Interface responsive</h3>
-          <p class="text-gray-600">Application PWA qui fonctionne parfaitement sur ordinateur, tablette et smartphone</p>
-        </div>
-
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Sécurité maximale</h3>
-          <p class="text-gray-600">Vos données sont protégées avec chiffrement, sauvegardes quotidiennes et communication sécurisée</p>
-        </div>
-
-        <div class="feature-card bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Application bilingue</h3>
-          <p class="text-gray-600">Interface disponible en français et anglais avec détection automatique de la langue</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-900 mb-4">Comment ça marche ?</h2>
-        <p class="text-xl text-gray-600">Démarrez en quelques minutes seulement</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-blue-600">1</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3">Créez votre compte</h3>
-          <p class="text-gray-600">Inscription gratuite en moins d'une minute</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-green-600">2</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3">Créez votre bibliothèque</h3>
-          <p class="text-gray-600">Configurez votre première bibliothèque</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-purple-600">3</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3">Ajoutez vos livres</h3>
-          <p class="text-gray-600">Scannez l'ISBN ou ajoutez manuellement</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-orange-600">4</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3">Gérez les emprunts</h3>
-          <p class="text-gray-600">Suivez les prêts et retours en temps réel</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Section -->
-  <section id="tarifs" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-900 mb-4">Tarification</h2>
-        <p class="text-xl text-gray-600">Commencez gratuitement, évoluez selon vos besoins</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Free Plan -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-500 relative">
-          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-            <span class="bg-green-500 text-white px-6 py-2 rounded-full text-sm font-semibold">
-              ACTUELLEMENT GRATUIT
-            </span>
-          </div>
-          <div class="text-center mb-8 mt-4">
-            <h3 class="text-2xl font-bold text-gray-900">Accès complet</h3>
-            <div class="mt-4">
-              <span class="text-5xl font-bold text-gray-900">0€</span>
-              <span class="text-gray-500">/mois</span>
-            </div>
-            <p class="text-gray-600 mt-2">Application en développement</p>
-          </div>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Bibliothèques illimitées
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Livres illimités
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Gestion des emprunts
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Support par email
-            </li>
-          </ul>
-          <a href="https://app.bibliochouette.fr" class="w-full bg-green-500 text-white py-3 px-6 rounded-xl font-semibold text-center block hover:bg-green-600 transition-colors">
-            Commencer maintenant
-          </a>
-        </div>
-
-        <!-- Premium Plan -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-          <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-gray-900">Premium</h3>
-            <div class="mt-4">
-              <span class="text-5xl font-bold text-gray-900">À venir</span>
-            </div>
-            <p class="text-gray-600 mt-2">Tarif à définir</p>
-          </div>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Tout du plan gratuit
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Partage de bibliothèques
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Gestion des rôles
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              QR codes pour emprunts
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Support prioritaire
-            </li>
-          </ul>
-          <div class="w-full bg-gray-100 text-gray-400 py-3 px-6 rounded-xl font-semibold text-center">
-            Bientôt disponible
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12 p-6 bg-blue-50 rounded-2xl">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">🎁 Offre de lancement</h3>
-        <p class="text-blue-700">Les utilisateurs actuels bénéficieront d'<strong>1 an d'abonnement premium gratuit</strong> dès le lancement des formules payantes !</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FAQ Section -->
-  <section id="faq" class="py-24 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-900 mb-4">Questions fréquentes</h2>
-        <p class="text-xl text-gray-600">Tout ce que vous devez savoir sur Bibliochouette</p>
-      </div>
-      
-      <div class="space-y-6">
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">L'application est-elle vraiment gratuite ?</h3>
-          <p class="text-gray-600">Oui ! Bibliochouette est actuellement entièrement gratuite pendant la phase de développement. De plus, les premiers utilisateurs bénéficieront d'1 an d'abonnement premium gratuit lors du lancement des formules payantes.</p>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Comment gérer une bibliothèque en ligne ?</h3>
-          <p class="text-gray-600">Bibliochouette vous permet de gérer vos livres, emprunteurs et prêts facilement depuis n'importe quel appareil connecté. Interface intuitive et moderne.</p>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Puis-je gérer plusieurs bibliothèques ?</h3>
-          <p class="text-gray-600">Oui, la gestion multi-bibliothèques est intégrée pour répondre à tous les besoins. Changez facilement entre vos différentes bibliothèques.</p>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Mes données sont-elles sécurisées ?</h3>
-          <p class="text-gray-600">Oui, la sécurité est une priorité : aucune donnée sensible n'est exposée, communication sécurisée et sauvegardes quotidiennes automatiques.</p>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">Faut-il installer une application ?</h3>
-          <p class="text-gray-600">Non, Bibliochouette est une PWA (Progressive Web App) qui fonctionne directement depuis votre navigateur. Vous pouvez créer un raccourci sur mobile pour l'utiliser comme une app native.</p>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-          <h3 class="text-lg font-semibold text-gray-900 mb-3">L'application fonctionne-t-elle sur tablette et smartphone ?</h3>
-          <p class="text-gray-600">Oui, l'interface est entièrement responsive et optimisée pour tous les appareils : ordinateur, tablette et smartphone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl font-bold text-gray-900 mb-6">Prêt à moderniser votre bibliothèque ?</h2>
-      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-        Rejoignez dès maintenant les centaines d'établissements qui utilisent Bibliochouette pour gérer leurs livres et emprunts de manière moderne et efficace.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-        <a href="https://app.bibliochouette.fr" class="bg-primary-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105">
-          Commencer gratuitement
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#pour-qui" class="text-sm font-medium text-slate-600 transition-colors hover:text-brand-tealDark">Pour qui</a>
+        <a href="#fonctionnalites" class="text-sm font-medium text-slate-600 transition-colors hover:text-brand-tealDark">Fonctionnalités</a>
+        <a href="#tarifs" class="text-sm font-medium text-slate-600 transition-colors hover:text-brand-tealDark">Tarifs</a>
+        <a href="#faq" class="text-sm font-medium text-slate-600 transition-colors hover:text-brand-tealDark">FAQ</a>
+        <a href="https://app.bibliochouette.fr" class="inline-flex items-center rounded-full bg-brand-tealDark px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-[#214b50]">
+          Accéder à l'app
         </a>
-        <p class="text-sm text-gray-500">Aucune carte bancaire requise</p>
       </div>
-      <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
-        <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          Configuration en 2 minutes
-        </div>
-        <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          Support inclus
-        </div>
-        <div class="flex items-center">
-          <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          100% sécurisé
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="col-span-1 md:col-span-2">
-          <div class="flex items-center space-x-3 mb-6">
-            <img src="logo_png_cropped.png" alt="Logo Bibliochouette" class="h-10 w-10" />
-            <span class="text-2xl font-bold">Bibliochouette</span>
+  <main id="contenu">
+    <section id="top" class="relative overflow-hidden text-white">
+      <div class="hero-shell absolute inset-0"></div>
+      <div class="grid-overlay absolute inset-0 opacity-35"></div>
+      <div class="absolute -left-24 top-16 h-72 w-72 rounded-full bg-brand-gold/20 blur-3xl animate-float"></div>
+      <div class="absolute right-0 top-20 h-96 w-96 rounded-full bg-brand-green/20 blur-3xl animate-float-slow"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div class="grid items-center gap-14 lg:grid-cols-2">
+          <div class="animate-fade-up">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white/90">
+              <span class="h-2.5 w-2.5 rounded-full bg-brand-gold"></span>
+              Pensé pour les écoles et associations
+            </div>
+            <h1 class="font-display max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+              La bibliothèque simple à gérer, même quand on manque de temps
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/84 sm:text-xl">
+              Suivez les livres, les emprunteurs et les prêts dans une interface claire, pensée pour les équipes
+              qui veulent rester organisées sans passer leurs soirées sur des tableaux.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <span class="rounded-full bg-white/12 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/12">Sans installation</span>
+              <span class="rounded-full bg-white/12 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/12">Prise en main rapide</span>
+              <span class="rounded-full bg-white/12 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/12">Pensé pour vos équipes</span>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a href="https://app.bibliochouette.fr" class="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-base font-semibold text-brand-tealDark shadow-soft transition-transform hover:-translate-y-0.5 hover:bg-[#fcfaf4]">
+                Commencer gratuitement
+              </a>
+              <a href="#fonctionnalites" class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-white/15">
+                Voir comment ça aide
+              </a>
+            </div>
+
+            <div class="mt-10 grid gap-4 sm:grid-cols-3">
+              <div class="glass-card rounded-3xl p-4 text-slate-900 shadow-lg">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-brown">Étape 1</p>
+                <p class="mt-2 text-sm font-semibold">Créer une bibliothèque</p>
+              </div>
+              <div class="glass-card rounded-3xl p-4 text-slate-900 shadow-lg">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-teal">Étape 2</p>
+                <p class="mt-2 text-sm font-semibold">Ajouter les livres et lecteurs</p>
+              </div>
+              <div class="glass-card rounded-3xl p-4 text-slate-900 shadow-lg">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-green">Étape 3</p>
+                <p class="mt-2 text-sm font-semibold">Gérer les prêts en quelques clics</p>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-300 mb-6 max-w-md">
-            La solution moderne et intuitive pour la gestion de bibliothèques. Simplicité, efficacité et sécurité réunies dans une application PWA.
+
+          <div class="relative animate-fade-up lg:pl-8">
+            <div class="absolute -left-10 top-12 hidden h-24 w-24 rounded-full bg-brand-gold/20 blur-2xl lg:block"></div>
+            <div class="absolute -right-8 bottom-12 hidden h-28 w-28 rounded-full bg-brand-green/20 blur-2xl lg:block"></div>
+
+            <div class="glass-card overflow-hidden rounded-[2rem] p-4 shadow-soft">
+              <div class="rounded-[1.5rem] bg-brand-tealDark p-5 text-white">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm text-white/65">Vue rapide</p>
+                    <h2 class="mt-1 font-display text-2xl font-bold">Votre bibliothèque en un coup d'oeil</h2>
+                  </div>
+                </div>
+
+                <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                  <div class="rounded-2xl bg-white/10 p-4">
+                    <p class="text-xs uppercase tracking-[0.16em] text-white/55">Livres</p>
+                    <p class="mt-2 text-2xl font-bold">Catalogue</p>
+                    <p class="mt-1 text-sm text-white/70">Retrouvez un titre en quelques secondes</p>
+                  </div>
+                  <div class="rounded-2xl bg-white/10 p-4">
+                    <p class="text-xs uppercase tracking-[0.16em] text-white/55">Emprunts</p>
+                    <p class="mt-2 text-2xl font-bold">Suivi</p>
+                    <p class="mt-1 text-sm text-white/70">Visualisez ce qui a été prêté</p>
+                  </div>
+                  <div class="rounded-2xl bg-white/10 p-4">
+                    <p class="text-xs uppercase tracking-[0.16em] text-white/55">Lecteurs</p>
+                    <p class="mt-2 text-2xl font-bold">Clair</p>
+                    <p class="mt-1 text-sm text-white/70">Gardez des fiches faciles à suivre</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid gap-4 bg-white p-5 sm:grid-cols-[1.25fr_0.75fr]">
+                <div class="rounded-3xl border border-slate-200/80 bg-[#fcfaf4] p-5">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Organisation</p>
+                      <h3 class="mt-1 font-display text-xl font-bold text-slate-900">Prêts en cours</h3>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 space-y-3">
+                    <div class="flex items-center justify-between rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
+                      <div>
+                        <p class="font-semibold text-slate-900">Album jeunesse</p>
+                        <p class="text-sm text-slate-500">Emprunté récemment</p>
+                      </div>
+                      <span class="rounded-full bg-brand-gold/20 px-3 py-1 text-xs font-semibold text-brand-brown">En cours</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
+                      <div>
+                        <p class="font-semibold text-slate-900">Roman ado</p>
+                        <p class="text-sm text-slate-500">Retour prévu bientôt</p>
+                      </div>
+                      <span class="rounded-full bg-brand-green/20 px-3 py-1 text-xs font-semibold text-brand-tealDark">Suivi</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl border border-slate-200/80 bg-white p-5 shadow-sm">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Simplicité</p>
+                  <h3 class="mt-1 font-display text-xl font-bold text-slate-900">Ajouter un livre</h3>
+                  <div class="mt-5 rounded-2xl bg-slate-50 p-4">
+                    <div class="h-3 w-20 rounded-full bg-brand-teal/25"></div>
+                    <div class="mt-3 h-3 w-32 rounded-full bg-brand-brown/20"></div>
+                    <div class="mt-6 h-24 rounded-2xl bg-gradient-to-br from-brand-teal/15 via-brand-green/15 to-brand-gold/20"></div>
+                  </div>
+                  <p class="mt-4 text-sm leading-6 text-slate-500">
+                    Trouver un livre, ajouter un lecteur ou enregistrer un retour sans friction.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pour-qui" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-brown">Pour qui</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight text-brand-tealDark sm:text-5xl">
+            Une solution pensée pour les équipes qui gèrent des livres au quotidien
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Pour les professeurs, documentalistes, responsables d'association et bénévoles qui veulent une méthode simple,
+            lisible et rassurante pour garder le contrôle sans se perdre dans des fichiers.
           </p>
-          <div class="flex space-x-4">
-            <a href="https://github.com/JeromeDesseaux/bibliochouette_front" class="text-gray-300 hover:text-white transition-colors">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/20 text-brand-brown">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
               </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Écoles</h3>
+            <p class="mt-3 text-slate-600">
+              Pour garder une bibliothèque de classe, un CDI ou un fonds pédagogique bien rangé.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-green/25 text-brand-tealDark">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Associations</h3>
+            <p class="mt-3 text-slate-600">
+              Pour prêter des livres simplement, sans logiciel compliqué à expliquer aux bénévoles.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-teal/20 text-brand-tealDark">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Petites équipes</h3>
+            <p class="mt-3 text-slate-600">
+              Une interface rapide à prendre en main pour rester organisé sans formation longue.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fonctionnalites" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl text-center mx-auto">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-brown">Ce que vous y gagnez</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight text-brand-tealDark sm:text-5xl">
+            Une page qui parle de bénéfices concrets, pas de jargon
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            L'objectif est de montrer rapidement pourquoi Bibliochouette fait gagner du temps, réduit les oublis et
+            rend la gestion plus fluide pour les équipes.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/20 text-brand-brown">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Catalogue clair</h3>
+            <p class="mt-3 text-slate-600">
+              Ajoutez et retrouvez vos livres facilement pour garder une collection bien tenue.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-green/25 text-brand-tealDark">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 10c0 4.418-4.03 8-9 8a9.967 9.967 0 01-4.14-.87L3 20l2.009-3.009A7.963 7.963 0 013 10c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Prêts et retours simples</h3>
+            <p class="mt-3 text-slate-600">
+              Suivez les sorties et les retours sans avoir à chercher dans plusieurs fichiers.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-teal/20 text-brand-tealDark">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Plusieurs bibliothèques</h3>
+            <p class="mt-3 text-slate-600">
+              Gérez plusieurs espaces de prêt depuis un seul endroit, sans vous disperser.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-brown/20 text-brand-brown">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Accessible partout</h3>
+            <p class="mt-3 text-slate-600">
+              Ouvrez-la depuis ordinateur, tablette ou mobile, sans installation compliquée.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-green/25 text-brand-tealDark">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Sérénité au quotidien</h3>
+            <p class="mt-3 text-slate-600">
+              Des données mieux organisées et un outil conçu pour éviter les erreurs de suivi.
+            </p>
+          </article>
+
+          <article class="feature-card rounded-[1.75rem] border border-white/70 bg-white/90 p-7 shadow-[0_20px_60px_rgba(23,54,58,0.08)]">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/20 text-brand-brown">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Prise en main rapide</h3>
+            <p class="mt-3 text-slate-600">
+              Une interface simple à comprendre, même pour une équipe qui ne veut pas passer du temps à se former.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-brown">En pratique</p>
+            <h2 class="mt-3 font-display text-4xl font-bold tracking-tight text-brand-tealDark sm:text-5xl">
+              Une mise en route simple, sans mode d'emploi compliqué
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-slate-600">
+              L'objectif est de vous permettre d'ouvrir, remplir et utiliser l'outil rapidement, sans phase d'apprentissage lourde.
+            </p>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="rounded-[1.75rem] bg-white p-7 shadow-[0_18px_50px_rgba(23,54,58,0.08)] ring-1 ring-slate-100">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-tealDark text-white font-bold">1</div>
+              <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Créer le compte</h3>
+              <p class="mt-3 text-slate-600">Créer un espace pour votre établissement.</p>
+            </div>
+            <div class="rounded-[1.75rem] bg-white p-7 shadow-[0_18px_50px_rgba(23,54,58,0.08)] ring-1 ring-slate-100">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-brown text-white font-bold">2</div>
+              <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Créer la bibliothèque</h3>
+              <p class="mt-3 text-slate-600">Ajouter vos livres et vos informations utiles.</p>
+            </div>
+            <div class="rounded-[1.75rem] bg-white p-7 shadow-[0_18px_50px_rgba(23,54,58,0.08)] ring-1 ring-slate-100">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-green text-brand-tealDark font-bold">3</div>
+              <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Ajouter les livres</h3>
+              <p class="mt-3 text-slate-600">Retrouver, prêter et récupérer vos ouvrages.</p>
+            </div>
+            <div class="rounded-[1.75rem] bg-white p-7 shadow-[0_18px_50px_rgba(23,54,58,0.08)] ring-1 ring-slate-100">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold text-brand-tealDark font-bold">4</div>
+              <h3 class="mt-5 font-display text-2xl font-bold text-slate-900">Gérer les prêts</h3>
+              <p class="mt-3 text-slate-600">Voir d'un coup d'oeil ce qui est prêté ou à rendre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tarifs" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-brown">Tarifs</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight text-brand-tealDark sm:text-5xl">
+            Une offre simple, facile à expliquer
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Aujourd'hui, vous pouvez démarrer sans frais. Le message reste transparent et rassurant.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-2">
+          <article class="relative rounded-[2rem] border border-brand-green/60 bg-white p-8 shadow-[0_24px_80px_rgba(23,54,58,0.08)]">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="rounded-full bg-brand-green px-5 py-2 text-sm font-semibold text-brand-tealDark shadow-sm">
+                Gratuit aujourd'hui
+              </span>
+            </div>
+            <div class="pt-3 text-center">
+              <h3 class="font-display text-2xl font-bold text-slate-900">Accès complet</h3>
+              <p class="mt-4 text-5xl font-bold tracking-tight text-slate-900">0€</p>
+              <p class="mt-2 text-slate-500">Pour démarrer dès maintenant</p>
+            </div>
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-green/25 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Bibliothèques et livres sans limite de structure</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-green/25 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Gestion des prêts et des retours</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-green/25 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Support par email</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-green/25 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Utilisable sur ordinateur et mobile</span>
+              </li>
+            </ul>
+            <a href="https://app.bibliochouette.fr" class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-brand-tealDark px-6 py-3.5 font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-[#214b50]">
+              Commencer maintenant
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-slate-200 bg-[#fcfaf4] p-8 shadow-[0_24px_80px_rgba(23,54,58,0.06)]">
+            <div class="text-center">
+              <h3 class="font-display text-2xl font-bold text-slate-900">Premium</h3>
+              <p class="mt-4 text-5xl font-bold tracking-tight text-slate-900">À venir</p>
+              <p class="mt-2 text-slate-500">Tarif non finalisé</p>
+            </div>
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-teal/15 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Tout le socle gratuit</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-teal/15 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Partage de bibliothèques</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-teal/15 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Gestion des rôles</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-teal/15 text-brand-tealDark">✓</span>
+                <span class="text-slate-600">Fonctionnalités avancées à définir</span>
+              </li>
+            </ul>
+            <div class="mt-8 rounded-2xl border border-dashed border-brand-brown/25 bg-white p-5 text-center text-slate-600">
+              Les détails de l'offre payante seront annoncés plus tard, sans surprise.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-24">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-brown">FAQ</p>
+          <h2 class="mt-3 font-display text-4xl font-bold tracking-tight text-brand-tealDark sm:text-5xl">
+            Les réponses utiles que vos équipes se posent vraiment
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Des réponses courtes et claires pour lever les doutes avant de commencer.
+          </p>
+        </div>
+
+        <div class="mt-12 space-y-4">
+          <details class="group rounded-[1.5rem] border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(23,54,58,0.07)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold text-slate-900">
+              Bibliochouette est-elle gratuite ?
+              <span class="text-2xl text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">
+              Oui. Vous pouvez commencer gratuitement, sans engagement.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(23,54,58,0.07)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold text-slate-900">
+              Pour qui le logiciel de bibliothèque est-il conçu ?
+              <span class="text-2xl text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">
+              Elle est pensée pour les écoles, associations et petites structures qui gèrent des livres au quotidien.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(23,54,58,0.07)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold text-slate-900">
+              Faut-il installer une application ?
+              <span class="text-2xl text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">
+              Non. Vous l'ouvrez directement depuis votre navigateur, sur ordinateur ou mobile.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(23,54,58,0.07)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold text-slate-900">
+              Peut-on gérer plusieurs bibliothèques ?
+              <span class="text-2xl text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">
+              Oui. Vous pouvez organiser plusieurs bibliothèques ou espaces de prêt dans un même outil.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(23,54,58,0.07)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-bold text-slate-900">
+              Mes données sont-elles sécurisées ?
+              <span class="text-2xl text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">
+              Oui. Le service est conçu pour protéger vos informations et éviter les pertes de suivi.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="overflow-hidden rounded-[2.5rem] bg-brand-tealDark px-6 py-10 text-center text-white shadow-soft sm:px-10 sm:py-14">
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/60">Prêt à commencer</p>
+          <h2 class="mx-auto mt-4 max-w-3xl font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Rendez la gestion de votre bibliothèque plus simple dès maintenant
+          </h2>
+          <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/80">
+            Bibliochouette aide à gagner du temps, à rester organisé et à offrir une expérience plus fluide aux équipes comme aux lecteurs.
+          </p>
+          <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <a href="https://app.bibliochouette.fr" class="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 font-semibold text-brand-tealDark transition-transform hover:-translate-y-0.5 hover:bg-[#fcfaf4]">
+              Commencer gratuitement
+            </a>
+            <a href="#faq" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-4 font-semibold text-white transition-colors hover:bg-white/15">
+              Lire les réponses
+            </a>
+          </div>
+          <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/75">
+            <span class="rounded-full border border-white/15 bg-white/10 px-4 py-2">Aucune carte bancaire requise</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-4 py-2">Configuration rapide</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-4 py-2">Interface responsive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/60 bg-[#17363a] text-white">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3">
+            <img src="logo_png_cropped.png" alt="Logo Bibliochouette" width="1324" height="1324" decoding="async" class="h-11 w-11 rounded-2xl">
+            <div>
+              <p class="font-display text-2xl font-bold">Bibliochouette</p>
+              <p class="text-sm text-white/65">Gestion de bibliothèque moderne</p>
+            </div>
+          </div>
+          <p class="mt-5 max-w-md text-white/72">
+            Logiciel de gestion de bibliothèque pour école et association, avec une interface française claire et une identité visuelle plus actuelle.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a href="https://app.bibliochouette.fr" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+              Ouvrir l'app
+            </a>
+            <a href="#faq" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+              Questions fréquentes
             </a>
           </div>
         </div>
-        
+
         <div>
-          <h3 class="text-lg font-semibold mb-4">Produit</h3>
-          <ul class="space-y-3 text-gray-300">
-            <li><a href="#fonctionnalites" class="hover:text-white transition-colors">Fonctionnalités</a></li>
-            <li><a href="#tarifs" class="hover:text-white transition-colors">Tarifs</a></li>
-            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="https://app.bibliochouette.fr" class="hover:text-white transition-colors">Application</a></li>
+          <h3 class="font-display text-lg font-bold">Produit</h3>
+          <ul class="mt-4 space-y-3 text-sm text-white/72">
+            <li><a href="#pour-qui" class="transition-colors hover:text-white">Pour qui</a></li>
+            <li><a href="#fonctionnalites" class="transition-colors hover:text-white">Fonctionnalités</a></li>
+            <li><a href="#tarifs" class="transition-colors hover:text-white">Tarifs</a></li>
+            <li><a href="#faq" class="transition-colors hover:text-white">FAQ</a></li>
           </ul>
         </div>
-        
+
         <div>
-          <h3 class="text-lg font-semibold mb-4">Support</h3>
-          <ul class="space-y-3 text-gray-300">
-            <li><a href="#faq" class="hover:text-white transition-colors">Documentation</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Besoin d'aide ?</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Tutoriels</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          <h3 class="font-display text-lg font-bold">Contact</h3>
+          <ul class="mt-4 space-y-3 text-sm text-white/72">
+            <li><a href="https://app.bibliochouette.fr" class="transition-colors hover:text-white">Application</a></li>
+            <li><a href="#faq" class="transition-colors hover:text-white">Besoin d'aide ?</a></li>
           </ul>
         </div>
       </div>
-      
-      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-300 text-sm">
-          &copy; 2025 Bibliochouette. Projet open source sous licence MIT.
-        </p>
-        <p class="text-gray-300 text-sm mt-4 md:mt-0">
-          Propulsé par React, TypeScript, Tailwind CSS
-        </p>
+
+      <div class="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2025 Bibliochouette.</p>
+        <p>Une solution pensée pour les écoles et associations.</p>
       </div>
     </div>
   </footer>
